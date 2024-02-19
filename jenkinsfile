@@ -126,6 +126,16 @@ pipeline {
                 }
             }
         }
+         stage('Test Staging') {
+            agent any
+            steps {
+              script {
+                sh '''
+                  curl ${HOSTNAME_DEPLOY_PROD} | grep -q "Hello world Rabia!"
+                '''
+              }
+            }
+        }
         
 
         
